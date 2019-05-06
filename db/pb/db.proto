@@ -1,0 +1,21 @@
+syntax = "proto2";
+package db.pb;
+
+message DBInfo {
+    required int32 Id = 1;
+    required string Name = 2;
+    optional string Country = 3;
+    required int32 Status = 4;
+    optional string Image = 5;
+    optional int32 HeadPhone = 6;
+    optional int32 HomePhone = 7;
+    optional string Email = 8;
+    required int32 Ctime = 9;
+    required int32 Mtime = 10;
+    optional DBExtinfo Extinfo = 11;
+}
+
+message DBExtinfo {
+    optional string Company = 1;
+    optional bytes Remark = 2;
+}

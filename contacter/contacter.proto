@@ -1,0 +1,110 @@
+
+syntax = "proto2";
+
+package contacter;
+
+service ContacterAPI {
+    rpc Insert(InsertRequest) returns (InsertResponse) {}
+    rpc GetInfo(GetInfoRequest) returns (GetInfoResponse) {}
+    rpc ModifyContacter(ModifyRequest) returns (ModifyResponse) {}
+    rpc Delete(DeleteRequest) returns (DeleteResponse) {}
+    rpc ReloadMap(ReloadMapRequest) returns (ReloadMapResponse) {}
+}
+
+message CONST {
+    //100000～199999
+    enum ErrorCode {
+        ERROR_WRONG_ID = 100001;
+        ERROR_INVALID_COUNTRY= 100002;
+        ERROR_DB_EXCEPTION= 100003;
+    }
+
+    enum ContacterStatus {
+        NORMAL = 1;
+        DELETE = 2;
+        DISABLE = 3;
+    }
+}
+
+enum SourceType {
+    DB = 1;
+    MAP = 2;
+    REDIS = 3;
+}
+
+enum LoadType {
+    ID = 1;
+    NAME =2 ;
+    COUNTRY = 3;
+    STATUS = 4;
+    HEADPHONE = 5;
+    EMAIL = 6;
+}
+
+message Contacter {
+    required int32 Id = 1;
+    required string Name = 2;
+    optional string Country = 3;
+    required int32 Status = 4;
+    optional string Image = 5;
+    optional int32 HeadPhone = 6;
+    optional int32 HomePhone = 7;
+    optional string Email = 8;
+    required int32 Ctime = 9;
+    required int32 Mtime = 10;
+    optional ContacterExtinfo Extinfo = 11;
+}
+
+message ContacterExtinfo {
+    optional string Company = 1;
+    optional bytes Remark = 2;
+}
+
+message GetInfoRequest {
+    optional Contacter contacter = 1;
+    optional SourceType Source = 2;//get from 'map' or 'redis'.
+}
+
+message GetInfoResponse {
+    optional Contacter contacter = 1;
+    optional string err_msg = 2;
+}
+
+message InsertRequest {
+    optional Contacter contacter = 1;
+}
+
+message InsertResponse {
+    optional Contacter contacter = 1;
+    optional string err_msg = 2;
+}
+
+message DeleteRequest {
+    optional int32 Id = 1;
+    optional string operator = 2;
+}
+
+message DeleteResponse {
+    optional Contacter contacter = 1;
+    optional string err_msg = 2;
+}
+
+message ModifyRequest {
+    optional Contacter contacter = 1;
+}
+
+message ModifyResponse {
+    optional Contacter contacter = 1;
+    optional string err_msg = 2;
+}
+
+message ReloadMapRequest {
+    optional LoadType ldType = 1;
+    optional string TypeId = 2;
+}
+
+message ReloadMapResponse {
+    optional Contacter contacter = 1;
+    optional string err_msg = 2;
+}
+

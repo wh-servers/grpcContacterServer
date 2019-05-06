@@ -1,0 +1,18 @@
+<config>
+    <ReadTimeout>3600000</ReadTimeout>
+    <WriteTimeout>1000</WriteTimeout>
+    <RequestTimeout>1000</RequestTimeout>
+    <ProcessTimeout>1000</ProcessTimeout>
+    <ConfigTimeout>10000</ConfigTimeout>
+    <MaxPackageLength>1048576</MaxPackageLength>
+    <ReCacheInternal>300</ReCacheInternal>
+    <OrmConfig>
+        <Name>contacter_db</Name>
+        <MaxConn>4000</MaxConn>
+        <MaxIdle>2000</MaxIdle>
+        <Master>test:admin@tcp(localhost:3306)/contacter_db?timeout=10s&amp;readTimeout=10s</Master>
+        <Slave>
+            <Value>test:admin@tcp(localhost:3306)/contacter_db?timeout=10s&amp;readTimeout=10s</Value>
+        </Slave>
+    </OrmConfig>>
+</config>
