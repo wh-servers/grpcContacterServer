@@ -4,9 +4,9 @@ import (
 	"flag"
 	"net"
 
-	service "github.com/wenhai0007/Servers/grpcContacterServer/Service"
-	pb "github.com/wenhai0007/Servers/grpcContacterServer/contacter"
-	db "github.com/wenhai0007/Servers/grpcContacterServer/db/service"
+	service "github.com/wh-servers/grpcContacterServer/Service"
+	pb "github.com/wh-servers/grpcContacterServer/contacter"
+	db "github.com/wh-servers/grpcContacterServer/db/service"
 	"google.golang.org/grpc"
 )
 

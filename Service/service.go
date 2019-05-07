@@ -4,9 +4,9 @@ import (
 	"context"
 
 	proto "github.com/golang/protobuf/proto"
-	pb "github.com/wenhai0007/Servers/grpcContacterServer/contacter"
-	db "github.com/wenhai0007/Servers/grpcContacterServer/db/service"
-	redis "github.com/wenhai0007/Servers/grpcContacterServer/redis/service"
+	pb "github.com/wh-servers/grpcContacterServer/contacter"
+	db "github.com/wh-servers/grpcContacterServer/db/service"
+	redis "github.com/wh-servers/grpcContacterServer/redis/service"
 )
 
 type ContacterServer struct{}

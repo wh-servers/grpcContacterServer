@@ -14,5 +14,5 @@
         <Slave>
             <Value>test:admin@tcp(localhost:3306)/contacter_db?timeout=10s&amp;readTimeout=10s</Value>
         </Slave>
-    </OrmConfig>>
+    </OrmConfig>
 </config>

@@ -1,7 +1,7 @@
 package db
 
 import (
-	pb "github.com/wenhai0007/Servers/grpcContacterServer/contacter"
+	pb "github.com/wh-servers/grpcContacterServer/contacter"
 )
 
 func OrmInit(conf string) (err error) {
