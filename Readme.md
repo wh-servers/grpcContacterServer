@@ -19,3 +19,7 @@ TechDesign 2:
 2) Search: request to search from redis-->get ids and then get contacter from db. 
 pros: 1)faster, do not call db directly; 2)after get id, can rank with the id according to the request params; 
 cons: 1)still neeed to call db if need extra info; 2) data is not garrateed to be updated.
+
+
+Generate grpc server and client code 
+protoc ./contacter.proto --go_out=plugins=grpc:.

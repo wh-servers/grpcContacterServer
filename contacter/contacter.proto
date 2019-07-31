@@ -9,6 +9,7 @@ service ContacterAPI {
     rpc ModifyContacter(ModifyRequest) returns (ModifyResponse) {}
     rpc Delete(DeleteRequest) returns (DeleteResponse) {}
     rpc ReloadMap(ReloadMapRequest) returns (ReloadMapResponse) {}
+    rpc DemoAPI(DemoRequest) returns (DemoResponse) {}
 }
 
 message CONST {
@@ -59,6 +60,15 @@ message ContacterExtinfo {
     optional string Company = 1;
     optional bytes Remark = 2;
 }
+
+message DemoRequest {
+    optional string demoInput = 1;
+}
+
+message DemoResponse {
+    optional string demoOutput = 1;
+}
+
 
 message GetInfoRequest {
     optional Contacter contacter = 1;

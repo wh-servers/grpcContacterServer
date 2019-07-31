@@ -2,8 +2,9 @@ package service
 
 import (
 	"context"
+	"fmt"
 
-	proto "github.com/golang/protobuf/proto"
+	"github.com/gogo/protobuf/proto"
 	pb "github.com/wh-servers/grpcContacterServer/contacter"
 	db "github.com/wh-servers/grpcContacterServer/db/service"
 	redis "github.com/wh-servers/grpcContacterServer/redis/service"
@@ -29,14 +30,14 @@ func (s *ContacterServer) GetInfo(ctx context.Context, req *pb.GetInfoRequest) (
 	return
 }
 
-func (s *ContacterServer) Modify(ctx context.Context, req *pb.ModifyRequest) (res *pb.ModifyResponse, err error) {
+func (s *ContacterServer) ModifyContacter(ctx context.Context, req *pb.ModifyRequest) (res *pb.ModifyResponse, err error) {
 	contacter := req.GetContacter()
 	result, _ := db.Modify(contacter)
 	res.Contacter = result
 	return
 }
 
-func (s *ContacterServer) Delete(cctx context.Context, req *pb.DeleteRequest) (res *pb.DeleteResponse, err error) {
+func (s *ContacterServer) Delete(ctx context.Context, req *pb.DeleteRequest) (res *pb.DeleteResponse, err error) {
 	id := req.GetId()
 	result, err := db.Delete(id)
 	res.Contacter = result
@@ -49,4 +50,15 @@ func (s *ContacterServer) ReloadMap(ctx context.Context, req *pb.ReloadMapReques
 	typeId := req.GetTypeId()
 	db.ReloadMap(loadType, typeId)
 	return
+}
+
+func (s *ContacterServer) DemoAPI(ctx context.Context, r *pb.DemoRequest) (*pb.DemoResponse, error) {
+	res := &pb.DemoResponse{}
+	if r == nil {
+		return nil, fmt.Errorf("nil req")
+	}
+	fmt.Println("the input is: ", r.DemoInput)
+	res = &pb.DemoResponse{}
+	res.DemoOutput = proto.String("this is a demo outout")
+	return res, nil
 }
